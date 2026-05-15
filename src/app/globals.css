@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --arc-glow: 0 0 30px rgba(26, 78, 244, 0.25);
+  --arc-glow-strong: 0 0 60px rgba(26, 78, 244, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #080c18;
+  color: #e8eaf0;
+  font-family: 'Space Grotesk', sans-serif;
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: #0d1224; }
+::-webkit-scrollbar-thumb { background: #2e3a62; border-radius: 2px; }
+
+/* Grid background */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(26, 78, 244, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 78, 244, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Glassmorphism card */
+.glass {
+  background: rgba(13, 18, 36, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(46, 58, 98, 0.6);
+}
+
+.glass-hover {
+  transition: all 0.2s ease;
+}
+
+.glass-hover:hover {
+  border-color: rgba(61, 114, 252, 0.4);
+  box-shadow: 0 0 20px rgba(26, 78, 244, 0.15);
+}
+
+/* Status badges */
+.status-open     { background: rgba(46, 58, 98, 0.6); color: #7aa1ff; }
+.status-funded   { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+.status-submitted { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
+.status-completed { background: rgba(26, 78, 244, 0.2); color: #7aa1ff; }
+.status-rejected  { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+.status-expired   { background: rgba(100, 116, 139, 0.2); color: #94a3b8; }
+
+/* Input styles */
+.arc-input {
+  background: rgba(19, 24, 48, 0.8);
+  border: 1px solid rgba(46, 58, 98, 0.8);
+  border-radius: 8px;
+  color: #e8eaf0;
+  font-family: 'Space Grotesk', sans-serif;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.arc-input:focus {
+  outline: none;
+  border-color: #3d72fc;
+  box-shadow: 0 0 0 2px rgba(61, 114, 252, 0.15);
+}
+
+.arc-input::placeholder {
+  color: #4a5580;
+}
+
+/* Button */
+.btn-primary {
+  background: linear-gradient(135deg, #1a4ef4, #0c32e0);
+  border: 1px solid rgba(61, 114, 252, 0.4);
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #3d72fc, #1a4ef4);
+  box-shadow: 0 0 20px rgba(26, 78, 244, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  background: rgba(19, 24, 48, 0.8);
+  border: 1px solid rgba(46, 58, 98, 0.8);
+  color: #7aa1ff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  border-color: #3d72fc;
+  background: rgba(26, 78, 244, 0.1);
+}
+
+/* Timeline connector */
+.step-connector::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(to bottom, rgba(61, 114, 252, 0.5), transparent);
+  transform: translateX(-50%);
+}
+
+/* Mono font for addresses/hashes */
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8em;
+}
+
+/* Animate in */
+.animate-in {
+  animation: slideUp 0.35s ease-out forwards;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.scanline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, rgba(26, 78, 244, 0.3), transparent);
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+  z-index: 100;
+}
